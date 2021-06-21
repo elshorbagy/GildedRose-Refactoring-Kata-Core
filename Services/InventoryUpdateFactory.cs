@@ -1,5 +1,4 @@
-﻿using System;
-using csharpcore.Services.Interface;
+﻿using csharpcore.Services.Interface;
 
 namespace csharpcore.Services
 {
@@ -7,7 +6,10 @@ namespace csharpcore.Services
     {
         public IInventoryUpdateService CreateService(string itemName)
         {
-            if(string.IsNullOrEmpty(itemName)) throw new ArgumentException("Item Not Found");
+            if(string.IsNullOrEmpty(itemName))
+            {
+                return new UnknownUpdateService();
+            }
 
             switch (itemName)
             {
